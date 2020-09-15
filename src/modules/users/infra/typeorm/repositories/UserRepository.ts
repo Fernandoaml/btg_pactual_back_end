@@ -4,6 +4,11 @@ import IUserRepository from '@modules/users/repositories/IUserRepository';
 import ICreateUsersDTO from '@modules/users/dtos/ICreateUsersDTO';
 import UserEntities from '@modules/users/infra/typeorm/entities/User';
 
+interface IUpdateUser {
+  login: string;
+  ip: string;
+}
+
 class UserRepository implements IUserRepository {
   private repository: Repository<UserEntities>;
 
@@ -28,6 +33,10 @@ class UserRepository implements IUserRepository {
     });
     await this.repository.save(user);
     return user;
+  }
+
+  public async updateIp({ login, ip }: IUpdateUser): Promise<void> {
+    this.repository.update({ login }, { ip });
   }
 }
 

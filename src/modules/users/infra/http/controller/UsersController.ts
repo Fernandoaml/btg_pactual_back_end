@@ -6,13 +6,13 @@ import CreateUserService from '@modules/users/services/CreateUserService';
 
 export default class UsersController {
   public async create(request: Request, response: Response): Promise<Response> {
-    const { login, ip, password } = request.body;
+    const { login, password } = request.body;
 
     const createUser = container.resolve(CreateUserService);
     const user = await createUser.execute({
       login,
       password,
-      ip,
+      ip: request.userIP.ip,
     });
 
     delete user.password;
