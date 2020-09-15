@@ -6,5 +6,8 @@ declare namespace Express {
     userIP: {
       ip: string;
     };
+    userLogin: {
+      login: string;
+    };
   }
 }

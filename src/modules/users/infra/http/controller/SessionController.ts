@@ -5,6 +5,9 @@ import { classToClass } from 'class-transformer';
 import AuthenticateUserService from '@modules/users/services/AuthenticateUserService';
 import UpdateUserIpService from '@modules/users/services/UpdateUserIpService';
 
+// eslint-disable-next-line import/no-mutable-exports
+export declare let globalLogin: string;
+
 export default class AuthenticationController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { ip } = request.userIP;
@@ -23,7 +26,7 @@ export default class AuthenticationController {
         ip,
       }),
     ]);
-
+    globalLogin = user.login;
     delete user.password;
     return response.json({ user: classToClass(user), token });
   }
