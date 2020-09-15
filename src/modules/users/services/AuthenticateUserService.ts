@@ -26,7 +26,6 @@ class AuthenticateUserService {
     }
 
     const passwordMatched = await compare(password, user.password);
-    // user.password = Senha criptografada / password = senha não criptografada
 
     if (!passwordMatched) {
       throw new AppError('Incorrect Email/Password combination.', 401);

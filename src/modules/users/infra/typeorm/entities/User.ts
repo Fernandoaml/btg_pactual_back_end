@@ -4,9 +4,10 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   CreateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
-// import Issues from './Issue';
+import Documents from '@modules/documents/infra/typeorm/entities/Documents';
 
 @Entity('users')
 class User {
@@ -16,8 +17,8 @@ class User {
   @Column()
   login: string;
 
-  // @OneToMany(() => Issues, issue => issue.repository)
-  // issuesId: Issues[];
+  @OneToMany(() => Documents, document => document.user)
+  documents: Documents[];
 
   @Column()
   password: string;
