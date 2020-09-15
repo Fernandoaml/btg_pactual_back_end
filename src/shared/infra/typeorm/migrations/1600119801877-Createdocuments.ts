@@ -37,12 +37,12 @@ export default class Createdocuments1600119801877
           {
             name: 'createdAt',
             type: 'timestamp',
-            isNullable: true,
+            default: 'now()',
           },
           {
             name: 'updatedAt',
             type: 'timestamp',
-            isNullable: true,
+            default: 'now()',
           },
         ],
       }),

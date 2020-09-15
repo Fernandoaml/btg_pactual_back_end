@@ -5,6 +5,6 @@ import UsersController from '@modules/users/infra/http/controller/UsersControlle
 const usersRouter = Router();
 const usersController = new UsersController();
 
-usersRouter.post('/', usersController.index);
+usersRouter.post('/', usersController.create);
 
 export default usersRouter;
