@@ -45,15 +45,7 @@ This project was thought to grow health to fulfill new requirements. If need cha
 
 ### S.O.L.I.D principles / DDD and TDD.
 
-I applied the DDD \(Domain-Driven Design\), segmented through knowledge area \(module/archive\). Only to back-end.
-
-I don't applied every concept of methodology. Every project has different features, and different moments.
-
-I isolate the archiver through the domain knowledge area. We has the ISSUE module with two entities \(Repository and Issue\). Why? Well we don't need more than one module don't have any sense have \(issue\) without \(repository\). thinkhing throug this way i decided make then in one module.
-
-Separate the business rule from the INFRA layer. which are the tools chosen to interact with the business rule layer. Ready to be changed. If necessary. We need to ensure that it works with another library, thinking about that we have created generic repositories that can be linked to any library of this type.
-
-Dependency Inversion Principle: instead of my repository know what the repository format are dealing. We pass this responsibility to the routes. Applying the interface and ensuring the L of solid. Basicly.
+I applied the DDD \(Domain-Driven Design\), segmented through knowledge area \(module/archive\).
 
 ### Libraries:
 
