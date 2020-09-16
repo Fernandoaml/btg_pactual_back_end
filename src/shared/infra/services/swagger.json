@@ -1,0 +1,247 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "BTG_Pactual_Back_End Swagger API",
+    "description": "some information about my BTG back end...",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3333",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Repositories",
+      "description": "Challenger to create a REST service with two topics."
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes":[
+    "application/json"
+  ],
+  "produces":[
+    "application/json"
+  ],
+  "paths": {
+    "/users":{
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a new user to login and be able to create a new document file.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "User",
+            "description": "Create a new User",
+            "schema": {
+              "$ref": "#/definitions/New_User"
+            }
+          }
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error, review the user data."
+          },
+          "400": {
+            "description": "Failed.. Bad post data"
+          }
+        }
+      }
+    },
+    "/sessions":{
+      "post": {
+        "tags": [
+          "Session"
+        ],
+        "summary": "Authenticate User and generate a new token to be able a create a new document",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "User_Session",
+            "description": "Authenticate User and generate a new token to be able a create a new document",
+            "schema": {
+              "$ref": "#/definitions/New_User"
+            }
+          }
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error, review the user data."
+          },
+          "400": {
+            "description": "Failed.. Bad post data"
+          }
+        }
+      }
+    },
+    "/documents":{
+      "post": {
+        "tags": [
+          "Document"
+        ],
+        "summary": "You should put the bearer generated on a session. To be able create a new document.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Document",
+            "description": "You should put the bearer generated on a session. To be able create a new document.",
+            "schema": {
+              "$ref": "#/definitions/Document"
+            }
+          }
+        ],
+        "produces":[
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Document_Response"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error, review the document data"
+          },
+          "400": {
+            "description": "Failed.. Bad post data"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "New_User": {
+      "properties": {
+        "login": {
+          "type": "string",
+          "description": "Ex: Jhon Doe"
+        },
+        "password": {
+          "type": "string",
+          "description": "Ex: 123456"
+        }
+      }
+    },
+    "New_Session": {
+      "properties": {
+        "login": {
+          "type": "string",
+          "description": "Ex: Jhon Doe"
+        },
+        "password": {
+          "type": "string",
+          "description": "Ex: 123456"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        }
+      }
+    },
+    "Session": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/Token"
+      },
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "login": {
+          "type": "string"
+        },
+        "ip": {
+          "type": "string"
+        }
+      }
+    },
+    "Token": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string"
+        }
+      }
+    },
+    "Document": {
+      "type": "object",
+      "properties": {
+        "fullName": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "RG": {
+          "type": "string"
+        },
+        "CPF": {
+          "type": "string"
+        }
+      }
+    },
+    "Document_Response": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "birthDate": {
+          "type": "string"
+        },
+        "CPF": {
+          "type": "string"
+        },
+        "RG": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "updatedAt": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
