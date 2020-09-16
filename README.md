@@ -78,6 +78,8 @@ I applied the DDD \(Domain-Driven Design\), segmented through knowledge area \(m
 
 **\*\*Obs:** To this project i don't implemented the .env file with the secret hash to generate JWT token to make more easy to test.
 
+* The folder with text file stay on main folder with name "tmp".
+
 ## **Tests:**
 
 * **Back End:**
