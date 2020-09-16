@@ -1,9 +1,9 @@
 import { injectable, inject } from 'tsyringe';
-import { hash } from 'bcryptjs';
 
 import ICreateUsersDTO from '@modules/users/dtos/ICreateUsersDTO';
 import AppError from '@shared/errors/AppErrors';
 import IUserRepository from '@modules/users/repositories/IUserRepository';
+import IHashProvider from '@modules/users/providers/HashProvider/models/IHashProvider';
 import User from '@modules/users/infra/typeorm/entities/User';
 
 @injectable()
@@ -11,6 +11,9 @@ class CreateUserService {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
+
+    @inject('HashProvider')
+    private hashProvider: IHashProvider,
   ) {}
 
   public async execute({
@@ -24,14 +27,13 @@ class CreateUserService {
       throw new AppError('Login address already existis', 400);
     }
 
-    const hashedPassword = await hash(password, 8);
+    const hashedPassword = await this.hashProvider.generateHash(password);
 
     const user = await this.userRepository.create({
       login,
       password: hashedPassword,
       ip,
     });
-    delete user.password;
     return user;
   }
 }

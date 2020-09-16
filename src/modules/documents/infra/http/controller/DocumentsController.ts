@@ -41,7 +41,7 @@ export default class DocumentsController {
       `Id do usuário no Sistema: ${id}`;
     process.chdir(tmpFolder);
 
-    fs.writeFile(`Documento-${uuidv4()}`, archiveTextBody, error => {
+    fs.writeFile(`Documento-${uuidv4()}.txt`, archiveTextBody, error => {
       if (error) throw new AppError('Failed to write a file on tmp folder.');
     });
     const createDocument = container.resolve(CreateDocumentService);
