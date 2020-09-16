@@ -79,12 +79,12 @@ Dependency Inversion Principle: instead of my repository know what the repositor
 2. After the node js install, you should be install the yarn Package Manager
    1. npm install -g yarn
 3. **You need clone the back end project:**
-   1. [https://github.com/Fernandoaml/LibQuality\_BackEnd/](https://github.com/Fernandoaml/libquality_backend)
+   1. [https://github.com/Fernandoaml/btg\_pactual\_back\_end.git](https://github.com/Fernandoaml/btg_pactual_back_end.git)
    2. Go to the folder and on command line interface you must be run this command: **yarn**
 4. **After run: yarn typeorm migration:run** 
 5. **After run: yarn dev:server**
 
-
+**\*\*Obs:** To this project i don't implemented the .env file with the secret hash to generate JWT token to make more easy to test.
 
 ## **Tests:**
 
